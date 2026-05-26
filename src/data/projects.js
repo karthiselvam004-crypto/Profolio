@@ -1,7 +1,7 @@
 // import { BiLogoTailwindCss } from "react-icons/bi";
-import {FaDatabase, FaHtml5, FaCss3Alt, FaJsSquare, FaGithub } from "react-icons/fa";
+import {FaHtml5, FaCss3Alt, FaJsSquare, FaGithub } from "react-icons/fa";
 import { AiOutlineApi } from "react-icons/ai";
-import { TbApi, TbDatabase } from "react-icons/tb";
+// import { TbApi, TbDatabase } from "react-icons/tb";
 import WeatherImage from "../assets/We.jpg";
 import digitalClock from "../assets/digital-clock.png";
 import webCalculator from "../assets/web-calculator.png";
