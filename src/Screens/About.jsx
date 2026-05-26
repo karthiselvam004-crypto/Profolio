@@ -1,146 +1,78 @@
-import { useEffect, useRef } from "react";
+import React from "react";
+import { Link } from "react-scroll";
+import AboutData from "../data/about";
+import ProfileData from "../data/profile";
 
-const skillCards = [
-  {
-    icon: "💼",
-    title: "Experience",
-    items: [
-      { bold: "1 year", rest: " of professional experience" },
-      { bold: null, rest: "• Full-stack web application development" },
-      { bold: null, rest: "• Building scalable backend systems" },
-      { bold: null, rest: "• Enterprise software solutions" },
-      { bold: null, rest: "• Agile & team collaboration" },
-    ],
-  },
-  {
-    icon: "⚛️",
-    title: "Frontend Stack",
-    items: [
-      { bold: "React Js", rest: " - Modern UI development" },
-      { bold: "JavaScript", rest: " - Core language" },
-      { bold: "HTML5 & CSS3", rest: " - Web standards" },
-      { bold: "Bootstrap", rest: " - UI components" },
-      { bold: "Responsive Design", rest: " - Mobile-first" },
-    ],
-  },
-  {
-    icon: "🔧",
-    title: "Backend Stack",
-    items: [
-      { bold: "Java", rest: " - Core technology" },
-      { bold: "MySQL", rest: " - Database design" },
-      { bold: "RESTful APIs", rest: " - API development" },
-      { bold: "Spring Boot", rest: " - Enterprise apps (learning)" },
-    ],
-  },
-  {
-    icon: "🛠️",
-    title: "Tools & Technologies",
-    items: [
-      { bold: "Git/GitHub", rest: " - Version control" },
-      { bold: "VS Code", rest: " - Primary IDE" },
-      { bold: "Eclipse", rest: " - Java development" },
-      { bold: "Postman", rest: " - API testing" },
-    ],
-  },
-  {
-    icon: "🎓",
-    title: "Certifications",
-    items: [
-      { bold: "Java Foundations", rest: " - Oracle Academy, 2023" },
-      { bold: "Front-End Dev", rest: " - Great Learning (HTML, CSS)" },
-      { bold: "Full Front-End", rest: " - Capgemini CSR (HTML, CSS, JS, Angular)" },
-    ],
-  },
-  {
-    icon: "🎯",
-    title: "Soft Skills",
-    items: [
-      { bold: "Problem Solving", rest: " - Analytical thinking" },
-      { bold: "Quick Learner", rest: " - Adapts fast to new tech" },
-      { bold: "Team Player", rest: " - Collaborative mindset" },
-      { bold: "Communication", rest: " - Clear & concise" },
-    ],
-  },
-];
-
-export default function About() {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const cards = sectionRef.current?.querySelectorAll(".skill-detail-card");
-    if (!cards) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry, i) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.style.opacity = "1";
-              entry.target.style.transform = "translateY(0)";
-            }, i * 80);
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    cards.forEach((card) => observer.observe(card));
-    return () => observer.disconnect();
-  }, []);
-
+const About = () => {
   return (
-    <div className="about-wrapper" ref={sectionRef}>
-
-      {/* ── INTRO CARD ── */}
-      <div className="about-intro-card">
-        <div className="about-avatar-lg">KS</div>
-        <div className="about-intro-body">
-          <div className="section-label">About Me</div>
-          <h2 className="about-intro-heading">
-            Hi, I'm Karthikeyan —{" "}
-            <span className="about-intro-accent">a passionate Full-Stack Developer</span>
-          </h2>
-          <p className="about-intro-text">
-            I'm a passionate Full-Stack Developer with expertise in building
-            modern, scalable, and user-friendly web applications. With
-            hands-on experience in <strong>Java</strong>,{" "}
-            <strong>React Js</strong>, and <strong>MySQL</strong>, I craft
-            efficient solutions that make a real impact.
+    <section className="body-font">
+      <div className="p-5 mt-3 mx-auto md:mt-5 md:mx-10 lg:mx-16">
+        <div id="about" className="flex flex-col text-center w-full mb-3">
+          <h1 className="sm:text-4xl text-3xl font-medium title-font mb-2 text-black">
+            About Me
+          </h1>
+          <p
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            data-aos-once="false"
+            className="text-lg mx-auto leading-relaxed font-medium text-dark-orange text-center"
+          >
+            Why hire me ?
           </p>
-          
-          <p className="about-intro-text">
-            I'm always eager to learn, grow, and take on new challenges. My
-            goal is to work in an organization where I can contribute
-            meaningfully while continuously improving my skills.
-          </p>
-          
+        </div>
+        <div className="mx-auto flex lg:flex-row flex-col items-center justify-center">
+          <div
+            data-aos="zoom-in"
+            data-aos-duration="1000"
+            data-aos-once="false"
+            className="lg:max-w-lg sm:w-2/3 lg:w-1/2 w-full mb-10 md:mb-0"
+          >
+            <img
+              className="object-cover object-center pointer-events-none rounded backdrop-contrast-200 backdrop-brightness-200"
+              alt="hero"
+              src={AboutData.image}
+            />
+          </div>
+          <div className="lg:w-1/2 justify-center lg:p-5 xl:p-7 md:p-5 flex flex-col items-center text-justify">
+            {AboutData.description?.map((item, index) => (
+              <p
+                key={index}
+                data-aos="zoom-in"
+                data-aos-duration="1000"
+                data-aos-once="false"
+                className="font-medium text-gray-700 text-lg lg:text-base xl:text-xl leading-loose xl:leading-8 mb-4"
+              >
+                {item}
+              </p>
+            ))}
+            <div
+              data-aos="zoom-in"
+              data-aos-duration="1500"
+              data-aos-once="false"
+              className="mt-7 flex gap-x-4 md:gap-x-5 justify-center md:justify-between"
+            >
+              <button className="inline-flex font-medium text-white bg-black border-2 border-black py-3 px-7 focus:outline-none hover:bg-cornsilk hover:border-dark-orange hover:text-black rounded-full text-md xl:px-10">
+                <Link
+                  to="contact"
+                  spy={true}
+                  smooth={true}
+                  offset={-100}
+                  duration={500}
+                >
+                  Hire Me
+                </Link>
+              </button>
+              <a href={ProfileData.resume} target="_blank" rel="noreferrer">
+                <button className="inline-flex font-medium text-white bg-dark-orange border-2 border-dark-orange py-3 px-7 focus:outline-none hover:bg-cornsilk hover:border-dark-orange hover:text-black rounded-full text-md xl:px-10">
+                  Get Resume
+                </button>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* ── SKILL DETAIL CARDS ── */}
-      <div className="skill-detail-grid">
-        {skillCards.map((card) => (
-          <div
-            className="skill-detail-card"
-            key={card.title}
-            style={{ opacity: 0, transform: "translateY(20px)", transition: "opacity 0.5s ease, transform 0.5s ease" }}
-          >
-            <h3 className="sdk-title">
-              <span className="sdk-icon">{card.icon}</span>
-              {card.title}
-            </h3>
-            <ul className="sdk-list">
-              {card.items.map((item, i) => (
-                <li key={i} className="sdk-item">
-                  {item.bold ? <strong>{item.bold}</strong> : null}
-                  <span className="sdk-rest">{item.rest}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-
-    </div>
+    </section>
   );
-}
+};
+
+export default About;
