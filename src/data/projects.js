@@ -1,5 +1,5 @@
-import { BiLogoFirebase, BiLogoMongodb, BiLogoNodejs, BiLogoReact, BiLogoRedux, BiLogoTailwindCss } from "react-icons/bi";
-import { FaJava, FaDatabase, FaHtml5, FaCss3Alt, FaJsSquare, FaGithub } from "react-icons/fa";
+// import { BiLogoTailwindCss } from "react-icons/bi";
+import {FaDatabase, FaHtml5, FaCss3Alt, FaJsSquare, FaGithub } from "react-icons/fa";
 import { AiOutlineApi } from "react-icons/ai";
 import { TbApi, TbDatabase } from "react-icons/tb";
 import WeatherImage from "../assets/We.jpg";
